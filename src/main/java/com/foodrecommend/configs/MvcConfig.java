@@ -13,22 +13,17 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 @Configuration
 @RequiredArgsConstructor
 @EnableJpaAuditing
 public class MvcConfig implements WebMvcConfigurer {
 
-    
     @Value("${file.upload.path}")
-    private String fileuploadPath;
+    private String fileUploadPath;
 
-    //사이트 설정 유지 인터셉터
+    // 사이트 설정 유지 인터셉터
     private final SiteConfigInterceptor siteConfigInterceptor;
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:///"+ fileuploadPath);
-    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -37,20 +32,28 @@ public class MvcConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-       registry.addInterceptor(siteConfigInterceptor)
-               .addPathPatterns("/**");
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:///" + fileUploadPath);
     }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(siteConfigInterceptor)
+                .addPathPatterns("/**");
+    }
+
     @Bean
-    public MessageSource messageSource(){
+    public MessageSource messageSource() {
         ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
         ms.setDefaultEncoding("UTF-8");
-        ms.setBasenames("messages.commons","messages.validations", "messages.errors");
+        ms.setBasenames("messages.commons", "messages.validations", "messages.errors");
 
         return ms;
     }
+
     @Bean
-    public HiddenHttpMethodFilter httpMethodFilter(){
+    public HiddenHttpMethodFilter httpMethodFilter() {  // GET, POST외에 DELETE, PATCH, PUT ....
         return new HiddenHttpMethodFilter();
     }
 }

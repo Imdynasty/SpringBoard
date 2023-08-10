@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-
-
 @Component
 @RequiredArgsConstructor
 public class JoinValidator implements Validator, MobileValidator, PasswordValidator {
@@ -80,5 +78,8 @@ public class JoinValidator implements Validator, MobileValidator, PasswordValida
                 }
             }
         }
+
+
+
     }
 }

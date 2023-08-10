@@ -1,13 +1,14 @@
 package com.foodrecommend.models.member;
 
+import com.foodrecommend.commons.constants.Role;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-@Data
-@Builder
+
+@Data @Builder
 public class MemberInfo implements UserDetails {
 
     private Long userNo;
@@ -16,8 +17,10 @@ public class MemberInfo implements UserDetails {
     private String userNm;
     private String email;
     private String mobile;
+    private Role roles;
 
     private Collection<GrantedAuthority> authorities;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

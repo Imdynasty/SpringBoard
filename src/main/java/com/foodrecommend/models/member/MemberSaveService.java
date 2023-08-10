@@ -1,5 +1,6 @@
 package com.foodrecommend.models.member;
 
+import com.foodrecommend.commons.constants.Role;
 import com.foodrecommend.controllers.members.JoinForm;
 import com.foodrecommend.entities.Member;
 import com.foodrecommend.repositories.MemberRepository;
@@ -21,7 +22,7 @@ public class MemberSaveService {
     public void save(JoinForm joinForm) {
 
         Member member = new ModelMapper().map(joinForm, Member.class);
-        //member.setRoles(Role.USER);
+        member.setRoles(Role.USER);
 
         member.setUserPw(passwordEncoder.encode(joinForm.getUserPw()));
 
