@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/front/main}" lang="">
+
 <main layout:fragment="content">
     <form name="frmLogin" method="post" th:action="@{/member/login}" autocomplete="off">
         <div>
@@ -26,5 +27,6 @@
 
         <button type="submit" th:text="#{member.action.login}"></button>
     </form>
+
 </main>
 </html>
