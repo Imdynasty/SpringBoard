@@ -44,4 +44,10 @@ public class MemberController {
 
         return "member/login";
     }
+
+    @GetMapping("/prac")
+    public String prac() {
+
+        return "member/prac";
+    }
 }
