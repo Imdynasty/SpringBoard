@@ -17,6 +17,7 @@ input[type='number'],
 input[type='password'],
 input[type='email'],
 input[type='date'] { border: 1px solid #d5d5d5; width: 100%; height: 45px; padding: 0 10px; border-radius: 3px; }
+textarea { border: 1px solid #d5d5d5; width: 100%; min-height: 150px; padding: 10px; resize: none; }
 
 /** 기본 스타일 - 체크박스, 라디오 버튼 */
 input[type='checkbox'] { display: none; }
@@ -28,6 +29,7 @@ input[type='radio']+label { min-height: 24px; line-height: 1; padding: 3px 0 3px
 input[type='radio']:checked+label { background:url("../../images/radio-on.png") no-repeat left center; }
 
 .dn { display: none !important; }
+
 
 /** 기본 레이아웃 스타일 */
 header { height: 80px; background: #fff; display: flex; align-items: center; }
